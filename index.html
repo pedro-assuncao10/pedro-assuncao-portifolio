@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Assunção | Desenvolvedor Full-stack & Sistemas Inteligentes</title>
+    <meta name="description" content="Portfólio de Pedro Assunção, Cientista da Computação, Mestrando e Co-fundador da OMNI. Especialista em criação de Landing Pages focadas em vendas e SaaS.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config for Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#071527',    /* Fundo principal (Azul bem escuro) */
+                            card: '#0f2440',    /* Fundo dos cards */
+                            turq: '#14b8a6',    /* Turquesa para detalhes */
+                            gold: '#d4af37',    /* Dourado base */
+                            goldLight: '#f3e5ab' /* Dourado claro */
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #071527;
+            color: #f3f4f6;
+        }
+        
+        /* Efeito de texto dourado brilhante */
+        .text-gradient-gold {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Botão Dourado */
+        .btn-gold {
+            background: linear-gradient(135deg, #d4af37 0%, #aa771c 100%);
+            color: #071527;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Botão Turquesa (Secundário) */
+        .btn-turq {
+            border: 1px solid #14b8a6;
+            color: #14b8a6;
+            transition: all 0.3s ease;
+        }
+        .btn-turq:hover {
+            background-color: rgba(20, 184, 166, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Floating WhatsApp Button Styling */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 12px;
+        }
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Tweak for GTranslate to not overlap */
+        .gtranslate_wrapper {
+            z-index: 999;
+        }
+
+        /* Card Hover Effects */
+        .hover-card {
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .hover-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+        
+        .premium-card {
+            border: 2px solid #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+            position: relative;
+        }
+        .premium-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #d4af37 0%, #aa771c 100%);
+            color: #071527;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-brand-gold selection:text-brand-dark">
+
+    <!-- Header / Navbar -->
+    <header class="fixed w-full top-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-brand-card transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl font-bold text-gradient-gold tracking-wider">P.A.</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-gray-300 hover:text-brand-gold transition-colors text-sm font-medium">Início</a>
+                    <a href="#sobre" class="text-gray-300 hover:text-brand-gold transition-colors text-sm font-medium">Quem Sou</a>
+                    <a href="#servicos" class="text-gray-300 hover:text-brand-gold transition-colors text-sm font-medium">O que Faço</a>
+                    <a href="#planos" class="text-gray-300 hover:text-brand-gold transition-colors text-sm font-medium">Planos</a>
+                    <a href="#contato" class="text-gray-300 hover:text-brand-gold transition-colors text-sm font-medium">Contato</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex">
+                    <a href="#contato" class="btn-gold px-6 py-2 rounded-full font-semibold text-sm">Fale Comigo</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-card">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#inicio" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-brand-gold">Início</a>
+                <a href="#sobre" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-brand-gold">Quem Sou</a>
+                <a href="#servicos" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-brand-gold">O que Faço</a>
+                <a href="#planos" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-brand-gold">Planos</a>
+                <a href="#contato" class="block px-3 py-2 text-base font-medium text-brand-gold font-bold">Contato</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Capa (Hero Section) -->
+    <section id="inicio" class="pt-32 pb-20 md:pt-40 md:pb-28 min-h-screen flex items-center relative overflow-hidden">
+        <!-- Background Decor -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-turq/5 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 rounded-full bg-brand-gold/5 blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="order-2 md:order-1 text-center md:text-left">
+                    <p class="text-brand-turq font-semibold tracking-wide uppercase text-sm mb-3">Sistemas Inteligentes & Alta Conversão</p>
+                    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Soluções Web que <br>
+                        <span class="text-gradient-gold">Escalam o seu Negócio.</span>
+                    </h1>
+                    <p class="text-gray-400 text-lg mb-8 max-w-lg mx-auto md:mx-0">
+                        Sou Pedro Assunção, desenvolvedor full-stack e co-fundador da OMNI. Transformo ideias complexas em plataformas robustas, rápidas e focadas em gerar resultados para você.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="https://wa.me/5598988169246?text=Olá Pedro, vi seu portfólio e gostaria de um orçamento." target="_blank" class="btn-gold px-8 py-3 rounded-full font-bold text-center">
+                            Solicitar Orçamento
+                        </a>
+                        <a href="#planos" class="btn-turq px-8 py-3 rounded-full font-bold text-center flex items-center justify-center gap-2 bg-transparent">
+                            Ver Planos
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Image / Visual -->
+                <div class="order-1 md:order-2 flex justify-center md:justify-end">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px]">
+                        <!-- Gold Border Frame -->
+                        <div class="absolute inset-0 border-2 border-brand-gold rounded-full transform translate-x-4 translate-y-4 opacity-50"></div>
+                        <!-- Profile Image Placeholder (Replace src with your actual professional photo URL) -->
+                        <img src="images/foto_profissional_pedro_assunção.jpeg" alt="Pedro Assunção" class="absolute inset-0 w-full h-full object-cover rounded-full border-4 border-brand-card shadow-2xl relative z-10 grayscale-[20%] hover:grayscale-0 transition-all duration-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Quem Sou Eu (Sobre) -->
+    <section id="sobre" class="py-20 bg-brand-card/50 border-y border-brand-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Info Text -->
+                <div class="lg:col-span-7">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold mb-6">
+                        Muito prazer, sou <span class="text-brand-gold">Pedro Assunção</span>.
+                    </h2>
+                    <div class="space-y-4 text-gray-300 leading-relaxed">
+                        <p>
+                            Sou <strong>Cientista da Computação</strong> formado pela UFMA (Universidade Federal do Maranhão) e atualmente <strong>Mestrando em Computação</strong>. Minha jornada acadêmica me deu uma base sólida na resolução de problemas complexos, mas é no mercado que aplico isso para gerar impacto real.
+                        </p>
+                        <p>
+                            Sou também <strong>Cofundador da OMNI - Sistemas Inteligentes</strong>, uma empresa focada em desenvolver SaaS (Software as a Service) de alto desempenho. Ao longo da minha carreira, atuei em diversas frentes, desde o desenvolvimento de sistemas de gestão médica até arquitetura de APIs REST em ambientes corporativos.
+                        </p>
+                        <p>
+                            Mais do que escrever código, meu foco é entender a dor do seu negócio e construir a ferramenta exata que você precisa para vender mais, automatizar processos e crescer no ambiente digital.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tech Stack & Skills -->
+                <div class="lg:col-span-5 bg-brand-dark p-8 rounded-2xl border border-brand-card shadow-xl">
+                    <h3 class="text-xl font-bold text-white mb-6 border-b border-brand-card pb-4">Stack Tecnológica & Expertise</h3>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-brand-turq text-sm font-semibold mb-3 uppercase tracking-wider">Linguagens & Frameworks</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-brand-card rounded-md text-sm text-gray-300 border border-gray-700">Python / Django</span>
+                            <span class="px-3 py-1 bg-brand-card rounded-md text-sm text-gray-300 border border-gray-700">React</span>
+                            <span class="px-3 py-1 bg-brand-card rounded-md text-sm text-gray-300 border border-gray-700">JavaScript</span>
+                            <span class="px-3 py-1 bg-brand-card rounded-md text-sm text-gray-300 border border-gray-700">Java / Spring Boot</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-brand-turq text-sm font-semibold mb-3 uppercase tracking-wider">Infra & Ferramentas</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-brand-card rounded-md text-sm text-gray-300 border border-gray-700">Docker</span>
+                            <span class="px-3 py-1 bg-brand-card rounded-md text-sm text-gray-300 border border-gray-700">PostgreSQL</span>
+                            <span class="px-3 py-1 bg-brand-card rounded-md text-sm text-gray-300 border border-gray-700">APIs REST</span>
+                            <span class="px-3 py-1 bg-brand-card rounded-md text-sm text-gray-300 border border-gray-700">Git</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. O Que Eu Faço (Serviços) -->
+    <section id="servicos" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Como posso <span class="text-gradient-gold">ajudar sua empresa</span>?</h2>
+                <p class="text-gray-400">Soluções tecnológicas desenhadas especificamente para conversão, presença digital forte e automação de processos operacionais.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="hover-card bg-brand-card/60 p-8 rounded-2xl flex flex-col items-start">
+                    <div class="w-14 h-14 rounded-full bg-brand-dark flex items-center justify-center mb-6 text-brand-gold border border-brand-gold/30">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Landing Pages (Vendas)</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm mb-4">
+                        Páginas otimizadas para carregamento rápido, design responsivo e gatilhos de conversão. Transforme seus visitantes em leads e clientes.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="hover-card bg-brand-card/60 p-8 rounded-2xl flex flex-col items-start">
+                    <div class="w-14 h-14 rounded-full bg-brand-dark flex items-center justify-center mb-6 text-brand-turq border border-brand-turq/30">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Sistemas Web e SaaS</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm mb-4">
+                        Através da OMNI, desenvolvemos softwares sob medida. Gestão, dashboards, controle de usuários e arquiteturas completas usando Python/Django e React.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="hover-card bg-brand-card/60 p-8 rounded-2xl flex flex-col items-start">
+                    <div class="w-14 h-14 rounded-full bg-brand-dark flex items-center justify-center mb-6 text-brand-gold border border-brand-gold/30">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Integrações de APIs</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm mb-4">
+                        Conecte seu sistema com meios de pagamento, CRMs, WhatsApp e serviços de terceiros de forma segura e eficiente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Tabela de Planos (Sites) -->
+    <section id="planos" class="py-24 bg-brand-dark relative">
+        <!-- Decor -->
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-card/20 to-transparent pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Investimento no seu <span class="text-gradient-gold">Sucesso Digital</span></h2>
+                <p class="text-gray-400">Escolha o plano ideal para a sua necessidade, seja para validar uma ideia ou estabelecer uma marca forte.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- PLANO: STARTER -->
+                <div class="bg-brand-card rounded-2xl p-8 flex flex-col border border-gray-800">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Starter (Básico)</h3>
+                        <p class="text-sm text-brand-turq font-medium mb-4">Foco: Cartão de Visita Digital</p>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-gray-400 text-sm">Estático:</span>
+                            <span class="text-2xl font-bold text-white">R$ 200</span>
+                        </div>
+                        <div class="flex items-baseline gap-2 mt-1">
+                            <span class="text-gray-400 text-sm">Dinâmico:</span>
+                            <span class="text-2xl font-bold text-white">R$ 600</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow text-sm text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Landing Page</strong> (Até 5 seções)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Conversão: Links simples de contato</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-500">
+                            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <span>Google Não incluso</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Domínio: seunome.netlify.app</span>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/5598988169246?text=Olá Pedro, tenho interesse no Plano Starter." target="_blank" class="w-full py-3 rounded-lg border border-brand-gold text-brand-gold font-semibold text-center hover:bg-brand-gold hover:text-brand-dark transition-colors">
+                        Contratar Starter
+                    </a>
+                </div>
+
+                <!-- PLANO: INTERMEDIÁRIO (DESTAQUE) -->
+                <div class="bg-brand-card premium-card rounded-2xl p-8 flex flex-col transform md:-translate-y-4">
+                    <span class="premium-badge">Mais Escolhido</span>
+                    <div class="mb-6 mt-2">
+                        <h3 class="text-xl font-bold text-brand-gold mb-2">Intermediário</h3>
+                        <p class="text-sm text-white font-medium mb-4">Foco: Focado em Vendas</p>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-gray-400 text-sm">Estático:</span>
+                            <span class="text-3xl font-bold text-white">R$ 350</span>
+                        </div>
+                        <div class="flex items-baseline gap-2 mt-1">
+                            <span class="text-gray-400 text-sm">Dinâmico:</span>
+                            <span class="text-3xl font-bold text-white">R$ 750</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow text-sm text-gray-200">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Landing Page</strong> (Até 7 seções)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Botão WhatsApp Flutuante + Formulário de E-mail</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Indexação + Google Meu Negócio (Essencial)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Domínio: seunome.netlify.app</span>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/5598988169246?text=Olá Pedro, tenho interesse no Plano Intermediário (Focado em Vendas)." target="_blank" class="w-full py-3 rounded-lg btn-gold font-bold text-center">
+                        Contratar Intermediário
+                    </a>
+                </div>
+
+                <!-- PLANO: PREMIUM -->
+                <div class="bg-brand-card rounded-2xl p-8 flex flex-col border border-gray-800">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Premium (Profissional)</h3>
+                        <p class="text-sm text-brand-turq font-medium mb-4">Foco: Empresa Estabelecida</p>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-gray-400 text-sm">Estático:</span>
+                            <span class="text-2xl font-bold text-white">R$ 500</span>
+                        </div>
+                        <div class="flex items-baseline gap-2 mt-1">
+                            <span class="text-gray-400 text-sm">Dinâmico:</span>
+                            <span class="text-2xl font-bold text-white">R$ 1000</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow text-sm text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Site Multi-páginas</strong> (Home, Sobre, Serviços, Contato)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>WhatsApp + Form. + <strong>Tradução 4 línguas</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Indexação + Google Meu Negócio</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Domínio .com.br Próprio</strong> (Incluso)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Estatísticas: Relatório Mensal (Analytics)</span>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/5598988169246?text=Olá Pedro, tenho interesse no Plano Premium para minha empresa." target="_blank" class="w-full py-3 rounded-lg border border-brand-gold text-brand-gold font-semibold text-center hover:bg-brand-gold hover:text-brand-dark transition-colors">
+                        Contratar Premium
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Chamada Pro Contato -->
+    <section id="contato" class="py-24 bg-brand-card/30 border-t border-brand-card relative">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="font-serif text-3xl md:text-5xl font-bold mb-6">Pronto para digitalizar o seu negócio?</h2>
+            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                Não perca mais clientes para a concorrência por falta de uma presença digital profissional. Vamos conversar e desenhar a melhor solução para você.
+            </p>
+            
+            <a href="https://wa.me/5598988169246?text=Olá Pedro, gostaria de conversar sobre um projeto." target="_blank" class="inline-flex items-center gap-3 bg-[#25d366] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#1ebd5a] transition-colors shadow-lg shadow-green-900/20 mb-12">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.012c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                Chamar no WhatsApp
+            </a>
+
+            <!-- Redes Sociais -->
+            <div class="flex justify-center gap-6">
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/pedro-assunção-718782271/" target="_blank" class="w-12 h-12 rounded-full bg-brand-card flex items-center justify-center text-gray-400 hover:text-brand-gold hover:border-brand-gold border border-transparent transition-all" aria-label="LinkedIn">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <!-- GitHub -->
+                <a href="https://github.com/pedro-assuncao10" target="_blank" class="w-12 h-12 rounded-full bg-brand-card flex items-center justify-center text-gray-400 hover:text-brand-gold hover:border-brand-gold border border-transparent transition-all" aria-label="GitHub">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://instagram.com/pedro_assuncao10" target="_blank" class="w-12 h-12 rounded-full bg-brand-card flex items-center justify-center text-gray-400 hover:text-brand-gold hover:border-brand-gold border border-transparent transition-all" aria-label="Instagram">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark border-t border-brand-card py-8 text-center text-sm text-gray-500">
+        <p>&copy; 2026 Pedro Assunção. Todos os direitos reservados.</p>
+        <p class="mt-2 text-xs">Desenvolvido com excelência | <span class="text-brand-gold">OMNI - Sistemas Inteligentes</span></p>
+    </footer>
+
+    <!-- WIDGETS (Do prompt) -->
+    
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="https://wa.me/5598988169246?text=Olá, gostaria de falar sobre um projeto e solicitar um orçamento com a OMNI!" target="_blank" class="floating-whatsapp" aria-label="Fale conosco no WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.012c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+    <!-- GTranslate Widget -->
+    <div class="gtranslate_wrapper"></div>
+    <script>window.gtranslateSettings = {"default_language":"pt","native_language_names":true,"languages":["pt","fr","es","en"],"globe_color":"#66aaff","wrapper_selector":".gtranslate_wrapper","horizontal_position":"left","vertical_position":"bottom","alt_flags":{"pt":"brazil"}}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/globe.js" defer></script>
+
+    <!-- Script para Menu Mobile e Interações -->
+    <script>
+        // Toggle Mobile Menu
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Fechar menu mobile ao clicar em um link
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
